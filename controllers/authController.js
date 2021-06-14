@@ -22,11 +22,9 @@ export const registerUser = async(req, res) => {
   }
 }
 export const loginUser = async(req, res) => {
-  //console.log('🐝 ~ file: authController.js ~ line 27 ~ req', req)
   const usernameOrEmail = req.body.username || req.body.email
   try {
     const userToLogIn = await User.findOne({ $or: [{ username: usernameOrEmail }, { email: usernameOrEmail } ] })
-    //console.log('🤖 ~ file: authController.js ~ line 30 ~ userToLogIn', userToLogIn)
     if (!userToLogIn || !userToLogIn.validatePassword(req.body.password)) {
       throw new Error( '🟥 Login details incorrect' )
     }
