@@ -15,16 +15,16 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: false },
   location: { type: String, required: false },
   age: { type: Number, required: false },
-  profilePicture: { type: String, required: false, default: 'https://res.cloudinary.com/dasisztwk/image/upload/v1617122951/Doodler/tukuwidulfvebmbxg1he.png' }
+  profilePicture: { type: String, required: false, default: '' }
 })
 
 
 //?reverse relationship so we get the user created artwork 
-// userSchema.virtual('usersArtwork', { 
-//   ref: 'Artwork',
-//   localField: '_id',
-//   foreignField: 'owner'
-// })
+userSchema.virtual('usersPosts', { 
+  ref: 'Post',
+  localField: '_id',
+  foreignField: 'owner'
+})
 
 userSchema.set('toJSON', {
   virtuals: true,
