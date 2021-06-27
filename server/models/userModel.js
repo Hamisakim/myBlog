@@ -15,11 +15,12 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: false },
   location: { type: String, required: false },
   age: { type: Number, required: false },
-  profilePicture: { type: String, required: false, default: '' }
+  profilePicture: { type: String, required: false, default: '' },
+  admin: { type: Boolean, required: true, default: false }
 })
 
 
-//?reverse relationship so we get the user created artwork 
+//?reverse relationship so we get the user created posts 
 userSchema.virtual('usersPosts', { 
   ref: 'Post',
   localField: '_id',

@@ -1,5 +1,5 @@
 import Post from '../models/blogPostModel.js'
-
+import { adminID } from '../config/environment.js'
 
 export const getAllPosts = async (req,res) => {
   try {
@@ -41,28 +41,41 @@ export const addPost = async (req,res) => {
 
 export const deletePost = async (req, res) => {
   console.log('delete post 🟠')
+  console.log('🐝 ~ file: postController.js ~ line 43 ~ reqID', req.currentUser)
+
+  const isUserAdmin = req.currentUser.admin 
+  console.log('🐝 ~ file: postController.js ~ line 47 ~ isUserAdmin', isUserAdmin)
 
   try {
     const { id } = req.params
-    const postToDelete = await Post.findById(id)
-    // const postToDelete = await Post.findById(id).populate('owner')
-    console.log('🐝 ~ file: router.js ~ line 57 ~ postToDelete', postToDelete)
+    // const postToDelete = await Post.findById(id)
+    const postToDelete = await Post.findById(id).populate('owner')
+    console.log('🐝 ~ file: postController.js ~ postToDelete', postToDelete)
+
+    const isUserOwner = postToDelete.owner.equals(req.currentUser._id)
+    console.log('🐝 ~ file: postController.js ~ line 56 ~ isUserOwner', isUserOwner)
+
     if (!postToDelete) {
       throw new Error('🟥 no artwork found to delete 🟥 ')
     }
-    if (  (!postToDelete.owner.equals(req.currentUser._id))
-    
-    
-    
-    //  || (!postToDelete.owner.equals('admin'))
-    ) throw new Error('🟥 Unauthorized to delete 🟥' )
+
+    if (!isUserAdmin && !isUserOwner){
+      throw new Error('🟥 Not admin / owner - Unauthorized to delete 🟥' )
+    }
+
+    if (isUserAdmin === true ){
+      postToDelete.remove()
+      return res.status(200).json({ 'deleted': postToDelete })
+    }
 
 
     postToDelete.remove()
-    return res.status(200).json(`DELETED ${postToDelete}`)
+    return res.status(200).json(postToDelete)
+
   } catch (err) {
-    console.log('🆘 Something went wrong')
-    console.log('⭐️',err.message)
-    return res.status(404).JSON( { message: err.message } )
+    console.log('🛑 ~ postController.js ~ line 58 ~ err', err.message)
+    return res.status(404).json( { message: err.message } )
   }
 }
+
+// !postToDelete.owner.equals(req.currentUser._id)
