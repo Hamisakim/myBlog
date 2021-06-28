@@ -3,6 +3,7 @@ import RecentPostFeeds from './components/RecentPostFeeds'
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
+import Register from './components/Register'
 const App = () => {
   return (
 
@@ -18,7 +19,9 @@ const App = () => {
           <Login/>
         </Route>
 
-      
+        <Route path="/register">
+          <Register/>
+        </Route>
       
       
       </Switch>
