@@ -22,6 +22,7 @@ export const registerUser = async(req, res) => {
   }
 }
 export const loginUser = async(req, res) => {
+  console.log('🐝 ~ file: authController.js ~ line 25 ~ req', req)
   const usernameOrEmail = req.body.username || req.body.email
   try {
     const userToLogIn = await User.findOne({ $or: [{ username: usernameOrEmail }, { email: usernameOrEmail } ] })

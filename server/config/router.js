@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllPosts, addPost, getOnePost, deletePost } from '../controllers/postController.js'
+import { getAllPosts, addPost, getOnePost, deletePost, editPost } from '../controllers/postController.js'
 import  { loginUser, registerUser }  from '../controllers/authController.js'
 import { secureRoute } from './secureRoute.js'
 
@@ -11,6 +11,7 @@ router.route('/posts')
 
 router.route('/posts/:id')
   .get(getOnePost)
+  .put(secureRoute, editPost)
   .delete(secureRoute, deletePost)
 
 router.route('/register')
