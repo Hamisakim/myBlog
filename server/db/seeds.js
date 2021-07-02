@@ -1,7 +1,9 @@
 import mongoose from 'mongoose'
 import { dbURI } from '../config/environment.js'
 import userData from '../db/data/userData.js'
+import postsData from '../db/data/postsData.js'
 import User from '../models/userModel.js'
+import Post from '../models/blogPostModel.js'
 
 const seedDataBase = async () => {
 
@@ -17,6 +19,13 @@ const seedDataBase = async () => {
     console.log('🐝 ~ file: seeds.js ~ line 18 ~ users', users)
     console.log(`🌱 DB seeded with ${users.length} users`)
     
+    const posts = await Post.create(postsData)
+    console.log('🐝 ~ file: seeds.js ~ line 21 ~ posts', posts)
+    console.log('🐝 ~ posts seeded', posts.length)
+    
+
+
+
     /// Close Connection 
     await mongoose.connection.close()
     console.log('⬛️ DB Closed ⬛️ ')
