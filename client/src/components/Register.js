@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
+import axios from 'axios'
 
 /*
 * A basic react login component.
@@ -10,27 +11,27 @@ import React, { useState } from 'react'
 */
 
 const Register = () => {
-
-
-  // eslint-disable-next-line no-unused-vars
   const [formData,setFormData] = useState({
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
   })
+
   const handleChange = () => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
-  
-  const handleSubmit = () => {
-
-
-
-    
+  const handleSubmit = async () => {
+    event.preventDefault()
+    console.log('🟪')
+    try {
+      const registerResponse = await axios.post('api/register', formData)
+      console.log('🐝 ~ file: Register.js ~ line 30 ~ registerResponse', registerResponse)
+    } catch (error) {
+      console.log('🐝 ~ file: Register.js ~ line 36 ~ error', error)
+    }
   }
-
 
   const registerForm = <>
     <input
@@ -65,11 +66,14 @@ const Register = () => {
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
-      >
+        onSubmit={handleSubmit} >
         {registerForm}
-
-
+        <button 
+          style={{
+            width: '100px',
+            height: '50px',
+          }}
+        />
       </form>
 
 

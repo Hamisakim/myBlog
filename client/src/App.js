@@ -6,29 +6,30 @@ import Login from './components/Login'
 import Register from './components/Register'
 const App = () => {
   return (
+    <>
+      <h1>Deploy me on GCP 😱</h1>
+      <BrowserRouter>
+        <Switch>
 
-    <BrowserRouter>
-      <Switch>
 
-
-        <Route exact path="/">
-          <RecentPostFeeds/>
-        </Route>
+          <Route exact path="/home">
+            <RecentPostFeeds/>
+          </Route>
             
-        <Route path="/login">
-          <Login/>
-        </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
 
-        <Route path="/register">
-          <Register/>
-        </Route>
+          <Route path="/register">
+            <Register/>
+          </Route>
       
       
-      </Switch>
+        </Switch>
 
 
-    </BrowserRouter>
-
+      </BrowserRouter>
+    </>
   )
 }
 
