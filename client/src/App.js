@@ -4,16 +4,20 @@ import RecentPostFeeds from './components/RecentPostFeeds'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
+import  NewPost  from './components/NewPost'
 const App = () => {
   return (
     <>
-      <h1>Deploy me on GCP 😱</h1>
+      {/* <h1>Deploy me on GCP 😱</h1> */}
       <BrowserRouter>
         <Switch>
 
-
-          <Route exact path="/home">
+          <Route  path="/home">
             <RecentPostFeeds/>
+          </Route>
+
+          <Route  path="/new">
+            <NewPost/>
           </Route>
             
           <Route path="/login">

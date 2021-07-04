@@ -48,7 +48,7 @@ const Login = () => {
       {/* <section className="section"> */}
       {/* <div className="container"> */}
       {/* <div className="columns"> */}
-      <p className="subtitle is-4">Login 🎨</p>
+      <p className="subtitle is-4">Login</p>
       <br />
       <form onSubmit={handleSubmit}className="box column is-half is-offset-one-quarter">
         <div className="field">

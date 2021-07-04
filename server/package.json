@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "serve": "npx nodemon index.js ",
+    "start": "npx nodemon index.js",
+    "serve": "npx nodemon index.js",
     "seed": "node db/seeds.js"
   },
   "type": "module",
