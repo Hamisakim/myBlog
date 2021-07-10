@@ -34,7 +34,7 @@ export const addPost = async (req,res) => {
     return res.status(202).json(postToAdd)
   } catch (error) {
     // console.log('🐝 ~ file: router.js ~ line 26 ~ error', error)
-    res.status(422).json( error.message  )
+    res.status(422).json( {error: error.message}  )
     console.error()
   }
 }

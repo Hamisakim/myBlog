@@ -4,14 +4,21 @@ import RecentPostFeeds from './components/RecentPostFeeds'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
-import  NewPost  from './components/NewPost'
+import NewPost  from './components/NewPost'
+import NavBar from './components/navBar/NavBar'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+
 const App = () => {
   return (
     <>
       {/* <h1>Deploy me on GCP 😱</h1> */}
-      <BrowserRouter>
-        <Switch>
 
+
+      <NavBar/>      <BrowserRouter>
+        <Switch>
+                  
           <Route  path="/home">
             <RecentPostFeeds/>
           </Route>
@@ -31,7 +38,7 @@ const App = () => {
       
         </Switch>
 
-
+        <ToastContainer />
       </BrowserRouter>
     </>
   )

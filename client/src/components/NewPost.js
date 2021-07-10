@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/authHelp'
+import { getErrorsToastify, toastifyPopUp } from '../helpers/popUps'
 
 
 //Todo
@@ -17,7 +18,6 @@ const NewPost = () => {
       text: '',
     }
   )
-  console.log('🐝 ~ file: NewPost.js ~ line 11 ~ formData', formData)
  
 
   const [errors, setErrors] = useState(null)
@@ -31,24 +31,22 @@ const NewPost = () => {
   }
 
   const handleSubmit = async (event) => {
-    console.log('🐝 ~ file: NewPost.js ~ line 26 ~ event🟢', event)
     event.preventDefault()
     try {
       const token = getTokenFromLocalStorage()
-
-      const sendPostResponse = await axios.post('/api/posts',formData, {
+      await axios.post('/api/posts',formData, {
         headers: { Authorization: `Bearer ${token}` } })
-
-      console.log('🐝 ~ file: NewPost.js ~ line 40 ~ sendPost', sendPostResponse)
+      toastifyPopUp(true,'Post Created')
+      event.target.reset()
     } catch (err) {
-      setErrors(err)
-      console.log('🐝 ~ file: NewPost.js ~ line 35 ~ err', err)
+      setErrors(err.response.data.error)
+      getErrorsToastify(err)
     }
   }
   
   const formFields = <>
     <input
-      rows="400"
+      // rows="400"
       className="input"
       type="text"
       placeholder="What's the title?"
@@ -69,18 +67,15 @@ const NewPost = () => {
 
   return (
     <div>
-
-      <form onSubmit={handleSubmit}>
+      <form 
+        onSubmit={handleSubmit}
+        autoComplete="off"
+      >
         {formFields}
         <div className="field-button">
           <button className="submit-post-btn">Submit Post</button><br />
         </div>
       </form>
-
-
-
-
-      
     </div>
   )
 }
