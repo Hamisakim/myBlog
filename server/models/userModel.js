@@ -30,6 +30,7 @@ userSchema.virtual('usersPosts', {
 userSchema.set('toJSON', {
   virtuals: true,
   transform(_doc, json) {
+    delete json.id
     delete json.password
     return json
   }

@@ -1,0 +1,19 @@
+$bg-dark-mode: #000;
+$grey-dark-mode: rgba(66, 66, 66, 0.712);
+$white-text: #fff;
+$primary:rgb(0, 132, 255);
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+body.dark-mode {
+  background-color: $bg-dark-mode;
+  color: $white-text;
+  .card {
+    background-color: $grey-dark-mode;
+    box-shadow: none;
+  }
+}

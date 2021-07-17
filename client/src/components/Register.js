@@ -51,6 +51,7 @@ const Register = () => {
     <input 
       type="password"
       name='password'
+      placeholder='Password'
       value={formData.password}
       onChange={handleChange}
 
@@ -58,6 +59,7 @@ const Register = () => {
     <input 
       type="password"
       name='passwordConfirmation'
+      placeholder='Password confirmation'
       value={formData.passwordConfirmation}
       onChange={handleChange}
     />

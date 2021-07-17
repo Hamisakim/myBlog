@@ -21,6 +21,9 @@ export const registerUser = async(req, res) => {
     return res.status(409).json({ message: err })
   }
 }
+
+
+/// Front end can choose to take username or email. 
 export const loginUser = async(req, res) => {
   console.log('🐝 ~ file: authController.js ~ line 25 ~ req', req)
   const usernameOrEmail = req.body.username || req.body.email

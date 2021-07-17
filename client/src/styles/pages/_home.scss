@@ -1,0 +1,15 @@
+.recent-posts-container {
+  ol {
+    list-style-type: none;
+  }
+  li {
+    padding: 2rem;
+    border: 1px solid blue;
+    margin: 50px 0;
+    border: 1px solid blue;
+
+    h1 {
+      color: red;
+    }
+  }
+}

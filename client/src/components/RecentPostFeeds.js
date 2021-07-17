@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import AddCircleIcon from '@material-ui/icons/AddCircle'
 const RecentPostFeeds = () => {
 
   /*
@@ -11,32 +11,44 @@ const RecentPostFeeds = () => {
 */
 
   const [blogPosts, setBlogPosts] = useState(null)
-  console.log('🐝 ~ file: recentPostFeeds.js ~ line 15 ~ blogPosts',  blogPosts)
+  console.log('🐝 ~ file: recentPostFeeds.js ~ line 15 ~ blogPosts', blogPosts)
 
   const getPosts = async () => {
     const posts = await axios.get('api/posts')
     setBlogPosts(posts.data)
   }
   useEffect(() => {
-    getPosts()  
-  },[])
+    getPosts()
+  }, [])
+
+
+
+
 
   if (!blogPosts) return <h1>No data</h1>
   return (
-    <ol style={{
-      listStyle: 'none',
-    }}>
-      {
-        blogPosts.map(post=>{
-          console.log('🐝 ~ file: recentPostFeeds.js ~ line 30 ~ post', post)
-          return ( 
-            <li className='post-feed-post' key={post.id}>
-              <h1>{post.title}</h1>
-              <h3>{post.text}</h3>
-            </li>)
-        })
-      }  
-    </ol>
+    <div className='recent-posts-container container'>
+      <ol className='recent-post-feeds'>
+        {
+          blogPosts.map(post => {
+            console.log('🐝 ~ file: recentPostFeeds.js ~ line 30 ~ post', post)
+            return (
+              <li key={post.id}>
+                <h1>{post.title}</h1>
+                <h3>{post.text}</h3>
+                <button className='edit-post'>🟩🟩🟩</button>
+                <AddCircleIcon fontSize='large' />
+                <button className='like-post'>❤️❤️❤️</button>
+                <button className='delete-post'>🟥🟥🟥</button>
+                <button className='save-post'>🟪🟪🟪</button>
+
+              </li>)
+          })
+        }
+      </ol>
+
+    </div>
+
   )
 }
 
