@@ -12,6 +12,7 @@ const styleVariables = {
   backgroundColor: 'red',
 }
 
+// eslint-disable-next-line no-unused-vars
 const myStyle = {
   backgroundColor: styleVariables.backgroundColor,
   // position: 'absolute',
@@ -29,11 +30,10 @@ const navItems = {
   alignItems: 'center',
   justifyContent: 'space-between',
   width: '100%',
-  backgroundColor: styleVariables.backgroundColor,
+  // backgroundColor: styleVariables.backgroundColor,
 }
 
 const dropDownStyle = {
-  backgroundColor: 'red',
   zIndex: 1000,
   position: 'fixed',
   height: '100vh',
@@ -69,16 +69,19 @@ const NavBar = (props) => {
 
   // }
 
-
+  const [wobble, setWobble] = React.useState(0)
   return (
     <>
-      <nav style={myStyle}>
+      <nav >  
         <div style={navItems} className='nav-items'>
           <div className='hamburger'>
             <button
               className={`hamburger--collapse hamburger ${isActive ? 'is-active' : ''}`}
               type="button"
-              onClick={handleBurger}  >
+              onClick={handleBurger, () => setWobble(1)}
+              onAnimationEnd={() => setWobble(0)}
+              wobble={wobble}
+            >
               <span className="hamburger-box">
                 <span className="hamburger-inner"></span>
               </span>
@@ -88,7 +91,7 @@ const NavBar = (props) => {
         </div>
 
         <div
-          className={!isActive ? 'scale-in-hor-left' : 'dropdown'}
+          className={!isActive ? 'dropdown' : 'dropdown'}
           style={
             !isActive ? {
               display: 'none',

@@ -22,6 +22,8 @@ const RecentPostFeeds = () => {
   }, [])
 
 
+  
+
 
 
 
@@ -36,8 +38,14 @@ const RecentPostFeeds = () => {
               <li key={post.id}>
                 <h1>{post.title}</h1>
                 <h3>{post.text}</h3>
+
                 <button className='edit-post'>🟩🟩🟩</button>
+                
+                
                 <AddCircleIcon fontSize='large' />
+                
+                
+                
                 <button className='like-post'>❤️❤️❤️</button>
                 <button className='delete-post'>🟥🟥🟥</button>
                 <button className='save-post'>🟪🟪🟪</button>
