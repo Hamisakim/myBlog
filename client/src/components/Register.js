@@ -71,7 +71,7 @@ const Register = () => {
 
   return (
     <div>
-      <form
+      <form className='register-form auth-form'
         onSubmit={handleSubmit} >
         {registerForm}
         <button
