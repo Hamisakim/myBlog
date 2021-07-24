@@ -1,2 +1,2 @@
 # myBlog
- mern blog
+mern blog
