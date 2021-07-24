@@ -78,7 +78,7 @@ const NavBar = (props) => {
             <button
               className={`hamburger--collapse hamburger ${isActive ? 'is-active' : ''}`}
               type="button"
-              onClick={handleBurger, () => setWobble(1)}
+              onClick={handleBurger}
               onAnimationEnd={() => setWobble(0)}
               wobble={wobble}
             >

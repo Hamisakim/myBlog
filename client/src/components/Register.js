@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import axios from 'axios'
+import { getErrorsToastify } from '../helpers/popUps'
 
 /*
 * A basic react login component.
@@ -11,12 +12,13 @@ import axios from 'axios'
 */
 
 const Register = () => {
-  const [formData,setFormData] = useState({
+  const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
   })
+  const [error, setError] = useState(null)
 
   const handleChange = () => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -30,34 +32,36 @@ const Register = () => {
       console.log('🐝 ~ file: Register.js ~ line 30 ~ registerResponse', registerResponse)
     } catch (error) {
       console.log('🐝 ~ file: Register.js ~ line 36 ~ error', error)
+      getErrorsToastify(error)
     }
   }
 
   const registerForm = <>
     <input
+      type='text'
       className='form-control input'
-      name="username" 
-      placeholder="Username" 
+      name='username'
+      placeholder='Username'
       value={formData.username}
       onChange={handleChange}
     />
-    <input 
-      type="email"
+    <input
+      type='email'
       name='email'
       placeholder='Email'
       value={formData.email}
       onChange={handleChange}
     />
-    <input 
-      type="password"
+    <input
+      type='password'
       name='password'
       placeholder='Password'
       value={formData.password}
       onChange={handleChange}
 
     />
-    <input 
-      type="password"
+    <input
+      type='password'
       name='passwordConfirmation'
       placeholder='Password confirmation'
       value={formData.passwordConfirmation}
@@ -70,16 +74,13 @@ const Register = () => {
       <form
         onSubmit={handleSubmit} >
         {registerForm}
-        <button 
+        <button
           style={{
             width: '100px',
             height: '50px',
           }}
-        />
+        >Register</button>
       </form>
-
-
-
     </div>
   )
 }

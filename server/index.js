@@ -1,4 +1,3 @@
-
 import express from 'express'
 import mongoose from 'mongoose'
 import { port, dbURI /*ATLAS_URI*/ } from './config/environment.js'
@@ -6,11 +5,7 @@ import router from './config/router.js'
 //import Book from '../models/book.js'
 import cors from 'cors'
 
-
 const app = express()
-
-
-
 
 const startServer = async() => {
   // const uri = process.env.ATLAS_URI

@@ -13,7 +13,7 @@ export const getErrorsToastify = (err) =>{
 }
 
 
-export const toastifyPopUp = (success = true,message = 'Success!') =>{
+export const toastifyPopUp = (success = true, message = 'Success!') =>{
   console.log('🐝 ~ file: popUps.js ~ line 7 ~ ' )
   if (success === true){
     toast.success(message, {

@@ -1,3 +1,7 @@
+@use '../abstracts/variables';
+
+
+
 $bg-dark-mode: #000;
 $grey-dark-mode: rgba(66, 66, 66, 0.712);
 $white-text: #fff;
@@ -15,5 +19,12 @@ body.dark-mode {
   .card {
     background-color: $grey-dark-mode;
     box-shadow: none;
+  }
+  button {
+    color: $white-text;
+  }
+  input{
+    background-color:$grey-dark-mode;
+    color: $white-text;
   }
 }

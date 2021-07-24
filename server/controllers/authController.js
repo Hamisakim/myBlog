@@ -7,8 +7,8 @@ export const registerUser = async(req, res) => {
   const checkEmail = await User.findOne( { username: req.body.email })
   try {
     if (checkUsername){
-      throw new Error('Username taken'),
-      res.status(202).json({ message: 'username taken', usernameTaken: true })
+      throw new Error('Username taken')
+      // ,res.status(409).json({ message: 'username taken', usernameTaken: true })
     } 
     if (checkEmail){
       throw new Error('Email taken')
@@ -18,7 +18,7 @@ export const registerUser = async(req, res) => {
     return res.status(202).json({ message: `welcome ${newUser.username}` })
   } catch (err) {
     console.log('🤖 ~ file: authController.js ~ line 10 ~ err', err)
-    return res.status(409).json({ message: err })
+    return res.status(409).json({ message: err.message })
   }
 }
 
