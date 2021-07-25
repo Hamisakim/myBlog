@@ -43,12 +43,18 @@ const RecentPostFeeds = () => {
     // setToggleModal(false)
   }
 
+
   if (!blogPosts) return <h1>No data</h1>
   return (
     <div style={{ marginTop: '200px' }} className='recent-posts-container container'>
       {toggleModal &&
         // eslint-disable-next-line no-undef
-        <EditModal toggleModal={toggleModal} postId={postId} postInfo={singlePost} />
+        <EditModal
+          toggleModal={toggleModal}
+          postId={postId}
+          postInfo={singlePost}
+          onClose={() => setToggleModal(false)}
+        />
       }
       <ol className='recent-post-feeds'>
 

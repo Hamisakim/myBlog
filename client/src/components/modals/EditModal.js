@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import { isUserOwner } from '../../helpers/authHelp'
 
-const EditModal = ({ postInfo, toggleModal }) => {
-  console.log('🐝 ~ toggleModal', toggleModal)
+const EditModal = ({ postInfo, toggleModal, onClose }) => {
+  console.log('👿 ~ toggleModal', toggleModal)
   // console.log('🐝 ~ postInfo', postInfo)
   const [hidden, setHidden] = useState(!toggleModal)
 
@@ -14,7 +14,7 @@ const EditModal = ({ postInfo, toggleModal }) => {
       text: '',
     }
   )
-  console.log('🐝 ~ formData', formData)
+  // console.log('🐝 ~ formData', formData)
   useEffect(() => {
     if (!postInfo) return null
     setFormData(
@@ -29,6 +29,10 @@ const EditModal = ({ postInfo, toggleModal }) => {
   const { owner } = postInfo
   isUserOwner(owner._id)
 
+  const handleChange = (event) => {
+    const newFormData = { ...formData, [event.target.name]: event.target.value }
+    setFormData(newFormData)
+  }
 
   const formFields = <>
     <input
@@ -38,21 +42,19 @@ const EditModal = ({ postInfo, toggleModal }) => {
       placeholder={formData.title}
       value={formData.title}
       name="title"
-    // onChange={handleChange}
-    // value={formData.password}
+      onChange={handleChange}
     />
     <textarea
       className="input"
       type="textarea"
-      // placeholder={formData.text}
       value={formData.text}
       name="text"
-    // onChange={handleChange}
-    // value={formData.password}
+      onChange={handleChange}
     />
   </>
   const handleClose = () => {
     setHidden(true)
+    onClose()
     //set display hidden
     //or pass to state... 
   }
@@ -62,7 +64,7 @@ const EditModal = ({ postInfo, toggleModal }) => {
       style={hidden ? { display: 'none' } : { display: 'block' }}
     >
       {formFields}
-      <button className="close-modal-btn" onClick={handleClose}></button>
+      <button className="close-modal-btn" onClick={handleClose}>Close</button>
     </div>
   )
 }
