@@ -1,6 +1,7 @@
 .modal {
   outline: 2px solid orange;
   margin: 0 auto;
+  padding: 10px;
   background-color: navy;
   // height: 60%;
   width: 80%;
@@ -9,6 +10,13 @@
   top: 0;
   left: 0;
   right: 0;
+
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction:column;
+
+
   input,
   textarea {
     width: 80%;

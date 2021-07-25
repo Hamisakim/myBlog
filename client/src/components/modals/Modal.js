@@ -5,7 +5,7 @@ import { getErrorsToastify, toastifyPopUp } from '../../helpers/popUps'
 
 //if no change, no edit
 
-const EditModal = ({ postInfo, toggleModal, onClose }) => {
+const Modal = ({ postInfo, toggleModal, onClose }) => {
   const [hidden, setHidden] = useState(!toggleModal)
   const [errors, setErrors] = useState(null)
   console.log('🐝 ~ errors', errors)
@@ -86,13 +86,15 @@ const EditModal = ({ postInfo, toggleModal, onClose }) => {
 
   return (
     <div className="modal edit-modal"
-      style={hidden ? { display: 'none' } : null }
+      style={hidden ? { display: 'none' } : null}
     >
-      {formFields}
-      <button className="close-modal-btn" onClick={handleClose}>Close</button>
-      <button className="submit-modal-btn" onClick={handleSubmit}>Edit</button>
+      <div className='modal-con'>
+        {formFields}
+        <button className="close-modal-btn" onClick={handleClose}>Close</button>
+        <button className="submit-modal-btn" onClick={handleSubmit}>Edit</button>
+      </div>
     </div>
   )
 }
 
-export default EditModal
+export default Modal
