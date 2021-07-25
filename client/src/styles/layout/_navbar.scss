@@ -1,4 +1,8 @@
 nav {
+  // position: fixed;
+  width: 100%;
+  top: 0 !important;
+  margin-bottom: 10vh;
   background-color: green;
   .dropdown {
     background-color: green;
@@ -48,9 +52,4 @@ nav {
     transform: translateX(0);
     opacity: 1;
   }
-}
-nav{
-  position: fixed;
-  width: 100%;
-  top: 0 !important;
 }

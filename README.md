@@ -10,6 +10,9 @@ React.js
 MongoDB
 Sass/scss (7-1 method)
 
+ToDo: A LOT
+-- add admin privileges
+
 
 features to add:
 * Spotify link to see my recent tracks

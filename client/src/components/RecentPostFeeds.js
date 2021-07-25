@@ -15,8 +15,6 @@ const RecentPostFeeds = () => {
 */
 
   const [blogPosts, setBlogPosts] = useState(null)
-  console.log('🐝 ~ file: recentPostFeeds.js ~ line 15 ~ blogPosts', blogPosts)
-
   const getPosts = async () => {
     const posts = await axios.get('api/posts')
     setBlogPosts(posts.data)
@@ -26,43 +24,55 @@ const RecentPostFeeds = () => {
   }, [])
 
 
-  const [postId, setPostId] = useState(null)
-  const [editModal, setEditModal] = useState(true)
-  const handleNewEditClick = (event) => {
-    setEditModal(true)
-    console.log('🟢')
-    setPostId(event.target.value)
-  }
+  /*
+   * use a function to pass through the blog post info rather than another get request?
+   * 
+   */
 
+
+  const [postId, setPostId] = useState(null)
+  const [singlePost, setSinglePost] = useState(null)
+
+  const [toggleModal, setToggleModal] = useState(false)
+  const handleModalClick = (event) => {
+    const postId = event.target.value
+    const postInfo = blogPosts.find(posts => posts.id === postId)
+    setToggleModal(!toggleModal)
+    setPostId(postId)
+    setSinglePost(postInfo)
+    // setToggleModal(false)
+  }
 
   if (!blogPosts) return <h1>No data</h1>
   return (
     <div style={{ marginTop: '200px' }} className='recent-posts-container container'>
-      {editModal &&
+      {toggleModal &&
         // eslint-disable-next-line no-undef
-        <EditModal postId={postId} />
+        <EditModal toggleModal={toggleModal} postId={postId} postInfo={singlePost} />
       }
       <ol className='recent-post-feeds'>
-        {
-          blogPosts.map(post => {
-            // console.log('🐝 ~ file: recentPostFeeds.js ~ line 30 ~ post', post)
-            return (
-              <li key={post.id}>
-                <h1>{post.title}</h1>
-                <h3>{post.text}</h3>
-                <button className='edit-post'
-                  value={post.id}
-                  onClick={handleNewEditClick}>🟩🟩🟩</button>
-                {/* <AddCircleIcon fontSize='large' /> */}
-                <button className='like-post'>❤️❤️❤️</button>
-                <button className='delete-post'>🟥🟥🟥</button>
-                <button className='save-post'>🟪🟪🟪</button>
-              </li>
+
+        {blogPosts.map(post => {
+          // console.log('🐝 ~ file: recentPostFeeds.js ~ line 30 ~ post', post)
+          return (
+            <li key={post.id}>
+              <h1>{post.title}</h1>
+              <h3>{post.text}</h3>
+              <button className='edit-post'
+                value={post.id}
+                onClick={handleModalClick}>
+                Edit Post
+              </button>
 
 
-            )
-          })
-        }
+              {/* <AddCircleIcon fontSize='large' /> */}
+              <button className='like-post'>❤️❤️❤️</button>
+              <button className='delete-post'>🟥🟥🟥</button>
+              <button className='save-post'>🟪🟪🟪</button>
+            </li>
+          )
+        })}
+
       </ol>
 
 
