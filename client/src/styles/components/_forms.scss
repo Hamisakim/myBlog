@@ -1,0 +1,42 @@
+.auth-form {
+  width: 60%;
+  align-self: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+  button {
+    min-width: 24em;
+    max-width: 60%;
+    height: 40px;
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    min-width: 23em;
+    max-width: 60%;
+    height: 40px;
+    margin: 1rem;
+
+  }
+}
+
+input {
+  padding: 1rem;
+  height: 4rem;
+  font-size: 2rem;
+  margin-top: 1rem;
+
+}
+textarea {
+  padding: 1rem;
+  width: 23rem;
+}
+
+.login-form {
+  button {
+    margin: 1rem;
+  }
+}

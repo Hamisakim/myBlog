@@ -14,11 +14,16 @@ const seedDataBase = async () => {
     ///Drop Connection
     await mongoose.connection.db.dropDatabase()
     console.log('🟦  DB Dropped 🟦 ')
+    
+    
+
     /// Seed Users 🔷
     const users = await User.create(userData)
     console.log('🐝 ~ file: seeds.js ~ line 18 ~ users', users)
     console.log(`🌱 DB seeded with ${users.length} users`)
     
+
+
     const posts = await Post.create(postsData)
     console.log('🐝 ~ file: seeds.js ~ line 21 ~ posts', posts)
     console.log('🐝 ~ posts seeded', posts.length)
