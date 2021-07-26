@@ -14,7 +14,7 @@ router.route('/posts')
 
 router.route('/posts/:id')
   .get(getOnePost)
-  .put(secureRoute, editPost)
+  .patch(secureRoute, editPost)
   .delete(secureRoute, deletePost)
 
 router.route('/register')

@@ -1,5 +1,4 @@
 import Post from '../models/blogPostModel.js'
-import { adminID } from '../config/environment.js'
 
 export const getAllPosts = async (req, res) => {
   try {
@@ -76,7 +75,7 @@ export const editPost = async (req, res) => {
     return res.status(202).json(postToEdit)
   } catch (error) {
     console.log('🐝 ~ file: postController.js ~ line 77 ~ error', error)
-    return res.status(404).json({ message: error.message })
+    return res.status(500).json({ message: error.message })
   }
 }
 
