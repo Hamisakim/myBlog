@@ -8,7 +8,23 @@ nav {
     background-color: green;
   }
 }
-
+nav {
+  position: relative;
+  z-index: 1000;
+  .dropdown {
+    z-index: 900;
+    position: absolute;
+    height: 50vh;
+    width: 251px;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    border-radius: 0 0 10px;
+    border-bottom: 1px solid red;
+    // border-right: 1px solid red;
+    
+  }
+}
 .dropdown[wobble="1"] {
   animation: wobble 1s 1;
   animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
