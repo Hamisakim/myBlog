@@ -79,11 +79,12 @@ const NavBar = (props) => {
           </div>
           <ThemeChanger />
         </div>
-        <Animated className='dropdown'
-          animationIn="slideInDown" animationOut="slideOutUp"
+        <Animated 
+          animationIn="slideInLeft" animationOut="slideOutLeft"
           isVisible={isActive}>
           <div
-            className={!isActive ? 'dropdown' : 'dropdown'}
+            className='dropdown'
+            // className={!isActive ? 'dropdown' : 'dropdown'}
             style={
               !isActive ? {
                 display: 'none',

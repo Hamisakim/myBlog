@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import AddCircleIcon from '@material-ui/icons/AddCircle'
 import EditModal from './modals/EditModal'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
+import CircularProgress from '@material-ui/core/CircularProgress'
+
+
 // import { set } from 'mongoose'
 // import { set } from 'mongoose'
 const RecentPostFeeds = () => {
@@ -44,9 +47,18 @@ const RecentPostFeeds = () => {
   }
 
 
-  if (!blogPosts) return <h1>No data</h1>
+  if (!blogPosts) return (
+    <div style={{
+      margin: '0 auto',
+      textAlign: 'center',
+    }}>
+      <h1>No data! Please let <a href='mailto:samishakim@gmail.com'>Sami</a> know if this persists</h1>
+      <CircularProgress />
+    </div>
+
+  )
   return (
-    <div style={{ marginTop: '200px' }} className='recent-posts-container container'>
+    <div style={{}} className='recent-posts-container container'>
       {toggleModal &&
         // eslint-disable-next-line no-undef
         <EditModal

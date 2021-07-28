@@ -11,18 +11,21 @@ nav {
 nav {
   position: relative;
   z-index: 1000;
+  .hamburger {
+    // position: absolute;
+    z-index: 100;
+  }
   .dropdown {
-    z-index: 900;
+    z-index: 00;
     position: absolute;
     height: 50vh;
-    width: 251px;
+    width: 10rem;
     display: flex;
     flex-direction: column;
     font-size: 2rem;
     border-radius: 0 0 10px;
     border-bottom: 1px solid red;
     // border-right: 1px solid red;
-    
   }
 }
 .dropdown[wobble="1"] {
