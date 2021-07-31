@@ -55,9 +55,15 @@ const NavBar = (props) => {
     setIsActive(!isActive)
   }
 
+  React.useEffect(() => {
+    handleAnimationGlitch()
+  })
 
-  const handleAnimation = () => {
 
+  // This is to prevent the navbar animating on render -- unsure if best method or whatever
+  const [makeMeTrue, setMakeMeTrue] = React.useState(false)
+  const handleAnimationGlitch = () => {
+    setMakeMeTrue(true)
   }
 
   return (
@@ -81,29 +87,29 @@ const NavBar = (props) => {
         </div>
         <Animated
           animationIn="slideInLeft" animationOut="slideOutLeft"
-          isVisible={isActive}>
-          <div
-            className='dropdown'
-            // className={!isActive ? 'dropdown' : 'dropdown'}
-            style={
-              !isActive ? {
-                display: '',
-                dropDownStyle,
-              } : dropDownStyle}>
+          isVisible={isActive}
+          className='dropdown'
+          // style={dropDownStyle}
+          style={
+            !makeMeTrue ? {
+              display: '',
+              dropDownStyle,
+            } : null}
+            
+        >
 
-            <Link to={'/home'} className="navbar-item">
-              Home
-            </Link>
-            <Link to={'/new'} className="navbar-item">
-              New
-            </Link>
-            <Link to={'/login'} className="navbar-item">
-              Login
-            </Link>
-            <Link to={'/register'} className="navbar-item">
-              Sign Up
-            </Link>
-          </div>
+          <Link to={'/home'} className="navbar-item">
+            Home
+          </Link>
+          <Link to={'/new'} className="navbar-item">
+            New
+          </Link>
+          <Link to={'/login'} className="navbar-item">
+            Login
+          </Link>
+          <Link to={'/register'} className="navbar-item">
+            Sign Up
+          </Link>
         </Animated>
       </nav>
     </>

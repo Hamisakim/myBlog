@@ -7,13 +7,23 @@ const ThemeChanger = () => {
 
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     const getTheme = localStorage.getItem('Theme')
-    if (getTheme === 'dark') {
+    const doesUserPreferDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    console.log('🐝 ~ mqList', doesUserPreferDark)
+
+    if (doesUserPreferDark) {
       setIsThemeLight(false)
       return document.body.classList.add('dark-mode')
-    } else if (getTheme === 'light') {
+    } else if (!doesUserPreferDark) {
       setIsThemeLight(true)
     }
+    // if (getTheme === 'dark') {
+    //   setIsThemeLight(false)
+    //   return document.body.classList.add('dark-mode')
+    // } else if (getTheme === 'light') {
+    //   setIsThemeLight(true)
+    // }
   }, [])
 
   const handleChange = () => {
